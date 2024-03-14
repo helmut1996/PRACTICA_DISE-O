@@ -1,6 +1,8 @@
 package com.example.practicacompose
 
 import android.annotation.SuppressLint
+import android.provider.CalendarContract.Colors
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +27,8 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonColors
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -39,6 +43,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -81,7 +88,7 @@ fun ContentReportMeterView(){
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        Text(text = "REPORTAR MEDIDOR DE ENERGIA")
+        Text(text = "REPORTAR MEDIDOR DE ENERGIA", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)))
         Divider(
             modifier = Modifier
                 .fillMaxWidth()
@@ -91,17 +98,25 @@ fun ContentReportMeterView(){
         Spacer(modifier = Modifier.height(16.dp))
 
         Row {
-            FilledIconButton(onClick = { /* doSomething() */ }) {
+            FilledIconButton(onClick = { /* doSomething() */ },
+                colors =    IconButtonDefaults.filledIconButtonColors(
+                    containerColor = Color.White
+                )
+            ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_dialog),
+                    painter = painterResource(id = R.drawable.ic_camera),
                     contentDescription = "",
                     modifier = Modifier.size(70.dp),
                     tint = Color.Blue
                 )
             }
-            FilledIconButton(onClick = { /* doSomething() */ }) {
+            FilledIconButton(onClick = { /* doSomething() */},
+                colors =    IconButtonDefaults.filledIconButtonColors(
+                             containerColor = Color.White
+                            )
+                ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_dialog),
+                    painter = painterResource(id = R.drawable.ic_image),
                     contentDescription = "",
                     modifier = Modifier.size(70.dp),
                     tint = Color.Blue
@@ -111,6 +126,8 @@ fun ContentReportMeterView(){
         Spacer(modifier = Modifier.height(16.dp))
         Row {
             Text(text = "ANL:",
+                fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                fontWeight = FontWeight.Bold,
             modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
             )
             SpinnerAnomalia()
@@ -119,15 +136,19 @@ fun ContentReportMeterView(){
         Spacer(modifier = Modifier.height(16.dp))
         Row {
             Text(text = "OBS:",
+                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                fontWeight = FontWeight.Bold,
                 modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
             )
             SpinnerAnomalia()
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "USO DE LA ENERGIA")
+        Text(text = "USO DE LA ENERGIA", fontFamily = FontFamily(Font(R.font.neuehassdisplay_light)))
         Row {
             Text(text = "USO:",
+                fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                fontWeight = FontWeight.Bold,
                 modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
             )
             SpinnerUso()
@@ -176,7 +197,9 @@ fun ContentReportMeterView(){
                     horizontal = 120.dp
                 )
             )) {
-                Text(text = "PREMID: ")
+                Text(text = "MEDIDOR: ", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             Row(modifier=Modifier.padding(
@@ -184,14 +207,25 @@ fun ContentReportMeterView(){
                     horizontal = 150.dp
                 )
             )) {
-                Text(text = "IR COD: ")
+                Text(text = "IR COD: ",fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                    fontWeight = FontWeight.Bold)
             }
 
         }
         Spacer(modifier = Modifier.height(50.dp))
         Button(
             onClick = { /* Do something! */ },
-            contentPadding = ButtonDefaults.ButtonWithIconContentPadding
+            contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    PaddingValues(
+                        horizontal = 10.dp
+                    )
+                ),
+            colors =    ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            )
         ) {
             Icon(
                 Icons.Filled.Info,
@@ -199,7 +233,10 @@ fun ContentReportMeterView(){
                 modifier = Modifier.size(ButtonDefaults.IconSize)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text("REPORTAR MEDIDOR")
+            Text("REPORTAR MEDIDOR",
+                fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                fontWeight = FontWeight.Bold
+                )
         }
 
     }
