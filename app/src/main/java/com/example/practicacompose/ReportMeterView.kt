@@ -2,6 +2,7 @@ package com.example.practicacompose
 
 import android.annotation.SuppressLint
 import android.provider.CalendarContract.Colors
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -56,7 +57,7 @@ import com.example.practicacompose.components.SpinnerUso
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReportMeterView(){
+fun ReportMeterView() {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -72,9 +73,8 @@ fun ReportMeterView(){
 }
 
 
-
 @Composable
-fun ContentReportMeterView(){
+fun ContentReportMeterView() {
     var textDireccion by rememberSaveable { mutableStateOf("") }
     var textComentario by rememberSaveable { mutableStateOf("") }
     var textMedidor by rememberSaveable { mutableStateOf("") }
@@ -88,18 +88,21 @@ fun ContentReportMeterView(){
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        Text(text = "REPORTAR MEDIDOR DE ENERGIA", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)))
-        Divider(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(1.dp),
-            color= MaterialTheme.colorScheme.primary
+        Text(
+            text = "REPORTAR MEDIDOR DE ENERGIA",
+            fontFamily = FontFamily(Font(R.font.neuehassdisplay_light))
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Image(
+            painter = painterResource(id = R.drawable.barra_aes),
+            contentDescription = "",
+            modifier = Modifier.size(height = 10.dp, width = 350.dp)
+        )
+        Spacer(modifier = Modifier.height(8.dp))
 
         Row {
-            FilledIconButton(onClick = { /* doSomething() */ },
-                colors =    IconButtonDefaults.filledIconButtonColors(
+            FilledIconButton(
+                onClick = { /* doSomething() */ },
+                colors = IconButtonDefaults.filledIconButtonColors(
                     containerColor = Color.White
                 )
             ) {
@@ -110,11 +113,12 @@ fun ContentReportMeterView(){
                     tint = Color.Blue
                 )
             }
-            FilledIconButton(onClick = { /* doSomething() */},
-                colors =    IconButtonDefaults.filledIconButtonColors(
-                             containerColor = Color.White
-                            )
-                ) {
+            FilledIconButton(
+                onClick = { /* doSomething() */ },
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = Color.White
+                )
+            ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_image),
                     contentDescription = "",
@@ -125,96 +129,106 @@ fun ContentReportMeterView(){
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row {
-            Text(text = "ANL:",
+            Text(
+                text = "ANL:",
                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
                 fontWeight = FontWeight.Bold,
-            modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
+                modifier = Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp))
             )
             SpinnerAnomalia()
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
         Row {
-            Text(text = "OBS:",
-                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
-                fontWeight = FontWeight.Bold,
-                modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
-            )
-            SpinnerAnomalia()
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "USO DE LA ENERGIA", fontFamily = FontFamily(Font(R.font.neuehassdisplay_light)))
-        Row {
-            Text(text = "USO:",
+            Text(
+                text = "OBS:",
                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
                 fontWeight = FontWeight.Bold,
-                modifier=Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp) )
+                modifier = Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp))
+            )
+            SpinnerObs()
+        }
+
+
+        Text(
+            text = "USO DE LA ENERGIA",
+            fontFamily = FontFamily(Font(R.font.neuehassdisplay_light))
+        )
+        Row {
+            Text(
+                text = "USO:",
+                fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(paddingValues = PaddingValues(vertical = 40.dp))
             )
             SpinnerUso()
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            modifier= Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
             value = textDireccion,
             onValueChange = { textDireccion = it },
             label = { Text("Direccion de referencia") }
         )
-        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            modifier= Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
             value = textComentario,
             onValueChange = { textComentario = it },
             label = { Text("Comentario") }
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        Column() {
+        Column {
 
             Text(text = "Medidor no registrado")
             Row {
                 OutlinedTextField(
-                    modifier=Modifier.width(100.dp),
+                    modifier = Modifier.width(100.dp),
                     value = textMedidor,
                     onValueChange = { textMedidor = it },
                     label = { Text("Medidor") }
                 )
 
-                Row(modifier=Modifier.padding(20.dp)) {
+                Row(modifier = Modifier.padding(20.dp)) {
                     Text(text = "PREMID: ")
                 }
 
 
             }
 
-            Row(modifier=Modifier.padding(
-                paddingValues = PaddingValues(
-                    horizontal = 120.dp
+            Row(
+                modifier = Modifier.padding(
+                    paddingValues = PaddingValues(
+                        horizontal = 120.dp
+                    )
                 )
-            )) {
-                Text(text = "MEDIDOR: ", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+            ) {
+                Text(
+                    text = "MEDIDOR: ", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
                     fontWeight = FontWeight.Bold
                 )
             }
 
-            Row(modifier=Modifier.padding(
-                paddingValues = PaddingValues(
-                    horizontal = 150.dp
+            Row(
+                modifier = Modifier.padding(
+                    paddingValues = PaddingValues(
+                        horizontal = 150.dp
+                    )
                 )
-            )) {
-                Text(text = "IR COD: ",fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
-                    fontWeight = FontWeight.Bold)
+            ) {
+                Text(
+                    text = "IR COD: ", fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
         }
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(30.dp))
         Button(
-            onClick = { /* Do something! */ },
+            onClick = { },
             contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
             modifier = Modifier
                 .fillMaxWidth()
@@ -223,8 +237,9 @@ fun ContentReportMeterView(){
                         horizontal = 10.dp
                     )
                 ),
-            colors =    ButtonDefaults.buttonColors(
-                containerColor = Color.Black
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Yellow,
+                contentColor = Color.White
             )
         ) {
             Icon(
@@ -233,10 +248,11 @@ fun ContentReportMeterView(){
                 modifier = Modifier.size(ButtonDefaults.IconSize)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text("REPORTAR MEDIDOR",
+            Text(
+                "REPORTAR MEDIDOR",
                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
                 fontWeight = FontWeight.Bold
-                )
+            )
         }
 
     }
@@ -244,6 +260,6 @@ fun ContentReportMeterView(){
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewSpiner2(){
+fun PreviewSpiner2() {
     ReportMeterView()
 }
