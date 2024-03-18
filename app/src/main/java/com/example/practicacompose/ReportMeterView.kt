@@ -59,6 +59,7 @@ import com.example.practicacompose.components.SpinnerUso
 @Composable
 fun ReportMeterView() {
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text(text = "ReportMeter ") },
