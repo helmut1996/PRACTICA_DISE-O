@@ -49,7 +49,7 @@ fun SpinnerUso() {
         Icons.Filled.KeyboardArrowDown
 
 
-    Column(Modifier.padding(8.dp)) {
+    Column(Modifier.padding(2.dp)) {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },

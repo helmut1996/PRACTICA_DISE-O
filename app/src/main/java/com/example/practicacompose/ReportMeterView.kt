@@ -62,9 +62,15 @@ fun ReportMeterView() {
         containerColor = Color.White,
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(text = "ReportMeter ") },
+                title = {
+                    Text(
+                        text = "ReportMeter ",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary
+                    containerColor = Color(0xFF214ADE)
                 )
             )
         }
@@ -98,9 +104,8 @@ fun ContentReportMeterView() {
             contentDescription = "",
             modifier = Modifier.size(height = 10.dp, width = 350.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
 
-        Row {
+        Row (Modifier.padding(0.dp)){
             FilledIconButton(
                 onClick = { /* doSomething() */ },
                 colors = IconButtonDefaults.filledIconButtonColors(
@@ -128,7 +133,6 @@ fun ContentReportMeterView() {
                 )
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
         Row {
             Text(
                 text = "ANL:",
@@ -239,7 +243,7 @@ fun ContentReportMeterView() {
                     )
                 ),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Yellow,
+                containerColor = Color(0xFFFFEB3B),
                 contentColor = Color.White
             )
         ) {
@@ -252,7 +256,7 @@ fun ContentReportMeterView() {
             Text(
                 "REPORTAR MEDIDOR",
                 fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.ExtraBold
             )
         }
 
