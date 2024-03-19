@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.practicacompose.components.ChartPie
 import com.example.practicacompose.components.DialogWarning
 import com.example.practicacompose.ui.theme.PracticaComposeTheme
 
@@ -30,7 +31,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    content()
+                    //content()
+                    
+                    ChartPie(arrayOf(0.5f, 0.25f, 0.25f,0.30f,0.25f))
                 }
             }
         }
