@@ -20,6 +20,7 @@ import com.example.practicacompose.components.ChartPie
 import com.example.practicacompose.components.DialogWarning
 import com.example.practicacompose.components.PieChartView
 import com.example.practicacompose.ui.theme.PracticaComposeTheme
+import com.example.practicacompose.views.IndustrialRading
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
                    // ChartPie(arrayOf(0.5f, 0.25f, 0.25f,0.30f,0.25f))
 
                  //   PieChart(arrayOf(5, 25, 25,30,25))
-                    PieChartView()
+                    IndustrialRading()
                 }
             }
         }
