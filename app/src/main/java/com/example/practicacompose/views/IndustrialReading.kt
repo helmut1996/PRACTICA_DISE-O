@@ -13,9 +13,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -84,6 +89,7 @@ fun ContentIndustrialRading(pd: PaddingValues) {
             .padding(pd)
             .fillMaxHeight()
             .background(Color.White)
+            .verticalScroll(rememberScrollState())
     ) {
         Card(
             colors = CardDefaults.cardColors(
@@ -236,9 +242,9 @@ fun ContentIndustrialRading(pd: PaddingValues) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            value = textDemanda,
-            onValueChange = { textDemanda = it },
-            label = { Text("Demanda") }
+            value = textFactorPotencia,
+            onValueChange = { textFactorPotencia = it },
+            label = { Text("Factor de Potencia") }
         )
         SpinnerAnomalia()
         SpinnerObs()
@@ -246,9 +252,71 @@ fun ContentIndustrialRading(pd: PaddingValues) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            value = textDemanda,
-            onValueChange = { textDemanda = it },
-            label = { Text("Demanda") }
+            value = textComentario,
+            onValueChange = { textComentario = it },
+            label = { Text("Comentario") }
         )
+        Spacer(modifier = Modifier.height(25.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Button(
+                onClick = { },
+                contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+                modifier = Modifier
+                    .padding(
+                        PaddingValues(
+                            horizontal = 10.dp
+                        )
+                    ),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF214ADE),
+                    contentColor = Color.White
+                )
+            ) {
+                Icon(
+                    Icons.Filled.Info,
+                    contentDescription = "Localized description",
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                )
+                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                Text(
+                    "REPORTAR",
+                    fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                    fontWeight = FontWeight.ExtraBold
+                )
+            }
+
+            Button(
+                onClick = { },
+                contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+                modifier = Modifier
+                    .padding(
+                        PaddingValues(
+                            horizontal = 10.dp
+                        )
+                    ),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF8BC34A),
+                    contentColor = Color.White
+                )
+            ) {
+                Icon(
+                    painterResource(id = R.drawable.ic_save),
+                    contentDescription = "Localized description",
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                )
+                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                Text(
+                    "GUARDAR",
+                    fontFamily = FontFamily(Font(R.font.neuehassdisplay_bold)),
+                    fontWeight = FontWeight.ExtraBold
+                )
+            }
+
+        }
     }
 }
