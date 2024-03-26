@@ -20,13 +20,24 @@ import com.example.practicacompose.components.ChartPie
 import com.example.practicacompose.components.DialogWarning
 import com.example.practicacompose.components.PieChartView
 import com.example.practicacompose.ui.theme.PracticaComposeTheme
+import com.example.practicacompose.util.Data
+import com.example.practicacompose.util.SaveReadTxt
+import com.example.practicacompose.views.EjemploCrearCarpetaYArchivo
 import com.example.practicacompose.views.IndustrialRading
+import com.example.practicacompose.views.Sample
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 
 class MainActivity : ComponentActivity() {
+    private lateinit var saveReadTxt: SaveReadTxt
+
+    @OptIn(ExperimentalPermissionsApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
 
+            saveReadTxt = SaveReadTxt()
             PracticaComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -34,11 +45,25 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //content()
-                    
-                   // ChartPie(arrayOf(0.5f, 0.25f, 0.25f,0.30f,0.25f))
 
-                 //   PieChart(arrayOf(5, 25, 25,30,25))
-                    IndustrialRading()
+                    // ChartPie(arrayOf(0.5f, 0.25f, 0.25f,0.30f,0.25f))
+
+                    //   PieChart(arrayOf(5, 25, 25,30,25))
+                    // IndustrialRading()
+
+
+                    val multiplePermissionsState = rememberMultiplePermissionsState(
+                        listOf(
+                            android.Manifest.permission.RECORD_AUDIO,
+                            android.Manifest.permission.CAMERA,
+                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        )
+                    )
+
+                    //Sample(multiplePermissionsState)
+                    EjemploCrearCarpetaYArchivo()
+
                 }
             }
         }
@@ -46,7 +71,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun content() {
+fun Content() {
     var showDialog by remember { mutableStateOf(false) }
 
     Column {
