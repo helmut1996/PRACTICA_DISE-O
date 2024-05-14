@@ -7,4 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#A9DD2C</color>
+
+
+    <!-- universal color-->
+
+    <color name="aes_blue">#214ADE</color>
+    <color name="aes_green">#16A837</color>
+    <color name="aes_purple">#8C5CF2</color>
+    <color name="aes_agua">#00A2C7</color>
+    <color name="aes_gray_01">#F5F5F5</color>
+    <color name="aes_gray_02">#E5E5E5</color>
+    <color name="aes_gray_03">#BFBFBF</color>
+
+
+
+
+    <!-- universal color-->
+
 </resources>

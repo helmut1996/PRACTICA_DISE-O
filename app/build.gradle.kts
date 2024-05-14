@@ -60,6 +60,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    implementation("ir.mahozad.android:pie-chart:0.7.0")
+
+    //PERMISOS JETPACK COMPOSE
+    implementation ("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
